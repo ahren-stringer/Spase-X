@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header/Header';
+import Main from './components/Main/Main';
+import Features from './components/Features/Features';
+import Footer from './components/Footer/Footer';
+import './style.css'
+import Api from './service/api'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+	api=new Api();
+
+	componentDidMount(){
+		this.api.getRocket().then(data=>console.log(data))
+	}
+
+	updateRockets=()=>{
+		
+	}
+
+	render(){
+		return (
+			<React.Fragment>
+				<Header/>
+				<Main/>
+				<Features/>
+				<Footer/>
+			</React.Fragment>
+		  );
+	}
 }
 
 export default App;
